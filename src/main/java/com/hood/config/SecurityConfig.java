@@ -20,11 +20,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void registerAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("lele").password("123").roles("USER")
-//                .and()
-//                .withUser("lolo").password("123").roles("USER");
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource)
