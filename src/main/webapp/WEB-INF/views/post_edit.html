@@ -1,0 +1,133 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Atlas Admin</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <!-- Font awesome -->
+    <link rel="stylesheet" th:href="@{/resources/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap3-wysihtml5.min.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/summernote.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/styles.min.css}" id="main-stylesheet"/>
+    <script th:src="@{/resources/js/main.min.js}"></script>
+
+</head>
+
+<body class="skin-deep-blue sidebar-image misty-mountains sidebar-collapse" data-aos-easing="ease"
+      data-aos-duration="400" data-aos-delay="0">
+
+<div class="wrapper">
+    <header class="main-header">
+        <a href="/" class="logo">
+            <span class="logo-lg">Atlas</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!--未登入-->
+                    <li sec:authorize="not isAuthenticated()">
+                        <a th:href="@{/user/login}">
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    <!--已登入-->
+                    <li class="dropdown user user-menu" sec:authorize="isAuthenticated()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="http://i.pravatar.cc/300?img=59" class="user-image" alt="User Image"/>
+                            <span class="hidden-xs" sec:authentication="name">hoodUser-name</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <img src="http://i.pravatar.cc/300?img=59" class="img-circle" alt="User Image"/>
+                                <p>
+                                    Zachary Banks - Web Developer
+                                    <small>Member since Nov. 2012</small>
+                                </p>
+                            </li>
+                            <li class="user-body">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="content-wrapper-transition">
+        <div class="content-wrapper-inner">
+
+            <div class="content-wrapper forms-editor-page">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Text Editors
+                        <small>Rich Text (WYSIWYG) Editors</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="#">Forms</a></li>
+                        <li class="active">Editors</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box box-info" data-aos="fade-up">
+                                <div class="box-header">
+                                    <h3 class="box-title">SummerNote Editor
+                                        <small>Specialized editor for Bootstrap</small>
+                                    </h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body pad">
+                                    <form>
+              <textarea id="summernote-editor" name="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with Summernote Editor.
+              </textarea>
+                                    </form>
+                                </div>
+                            </div><!-- /.box -->
+                        </div><!-- /.col-->
+                    </div><!-- ./row -->
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
+
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    by <strong>Authentic Pixels</strong>
+                </div>
+                <strong>Copyright &copy; 2016 <a href="http://authenticpixels.com">Atlas Admin</a>.</strong> All rights
+                reserved.
+            </footer>
+
+
+            <script th:src="@{/resources/js/form-editor.min.js}"></script>
+
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

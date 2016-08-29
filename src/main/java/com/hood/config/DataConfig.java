@@ -20,7 +20,7 @@ public class DataConfig {
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/hood");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/hood?autoReconnect=true&useSSL=false");
         dataSource.setUsername("root");
         dataSource.setPassword("19940218");
         return dataSource;
