@@ -32,6 +32,7 @@ public class JdbcUserRepository implements UserRepository {
             HoodUser user = jdbcOperations.queryForObject("SELECT id, username, password, email FROM user where username = ?", new UserRowMapper(), username);
             return user;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
