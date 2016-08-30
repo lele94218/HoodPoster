@@ -36,6 +36,7 @@ public class PostController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveUserPost(@Valid UserPost userPost, Errors errors, Principal principal) {
+        logger.info(errors.toString());
         if (errors.hasErrors()) {
             return "post_edit";
         }
