@@ -12,17 +12,17 @@ import java.util.Date;
 public class UserPost {
     private Long id;
 
-//    @NotBlank
+    //    @NotBlank
 //    @SafeHtml(message = "html.safe")
-    @Size(min = 5, max = 250, message = "{text.size}")
+    @Size(min = 5, max = 250, message = "{title.size}")
     private String title;
 
     private Date date;
 
     private String userName;
-//    @NotBlank
-//    @SafeHtml(message = "html.safe")
-    @Size(min = 5, max = 65535, message = "{text.size}")
+    //    @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.RELAXED, message = "{html.safe}")
+    @Size(min = 5, max = 65535, message = "{content.size}")
     private String content;
 
     public UserPost() {
