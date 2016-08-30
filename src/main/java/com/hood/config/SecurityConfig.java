@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/user/*/edit").authenticated()
                     .antMatchers("/post/add").authenticated()
+                    .antMatchers("/post/save").authenticated()
                     .anyRequest().permitAll();
     }
 }

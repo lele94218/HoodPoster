@@ -1,6 +1,5 @@
 package com.hood.pojo;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.validation.constraints.Size;
@@ -12,16 +11,21 @@ import java.util.Date;
 public class UserPost {
     private Long id;
 
-    //    @NotBlank
-//    @SafeHtml(message = "html.safe")
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE, message = "{html.safe}")
     @Size(min = 5, max = 250, message = "{title.size}")
     private String title;
 
     private Date date;
 
     private String userName;
-    //    @NotBlank
-    @SafeHtml(whitelistType = SafeHtml.WhiteListType.RELAXED, message = "{html.safe}")
+    @SafeHtml(
+            whitelistType = SafeHtml.WhiteListType.RELAXED,
+            additionalTagsWithAttributes = {
+                    @SafeHtml.Tag(name = "font", attributes = {"face", "style"}),
+                    @SafeHtml.Tag(name = "b", attributes = {"style"})
+            },
+            message = "{html.safe}"
+    )
     @Size(min = 5, max = 65535, message = "{content.size}")
     private String content;
 
@@ -65,7 +69,7 @@ public class UserPost {
         return userName;
     }
 
-    public void setUserId(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 

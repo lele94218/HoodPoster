@@ -21,7 +21,7 @@ public class JdbcUserPostRepository implements UserPostRepository {
     }
 
     public UserPost save(UserPost userPost) {
-        jdbcOperations.update("INSERT INTO user_post (title, date, userName, content)",
+        jdbcOperations.update("INSERT INTO user_post (title, date, userName, content) VALUES (?, ?, ?, ?)",
                 userPost.getTitle(), userPost.getDate(), userPost.getUserName(), userPost.getContent());
         return userPost;
     }

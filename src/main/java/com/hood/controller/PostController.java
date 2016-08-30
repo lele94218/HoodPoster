@@ -1,7 +1,9 @@
 package com.hood.controller;
 
+import com.hood.data.UserPostRepository;
 import com.hood.pojo.UserPost;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.Date;
 
 /**
  * @author taoranxue on 8/29/16 1:49 PM.
@@ -17,6 +21,13 @@ import javax.validation.Valid;
 @RequestMapping("/post")
 public class PostController {
     private Logger logger = Logger.getLogger(PostController.class);
+    private UserPostRepository userPostRepository;
+
+    @Autowired
+    public PostController(UserPostRepository userPostRepository) {
+        this.userPostRepository = userPostRepository;
+    }
+
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addUserPost(Model model) {
         model.addAttribute(new UserPost());
@@ -24,11 +35,15 @@ public class PostController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveUserPost(@Valid UserPost userPost, Errors errors, Model model) {
+    public String saveUserPost(@Valid UserPost userPost, Errors errors, Principal principal) {
         if (errors.hasErrors()) {
             return "post_edit";
         }
-        logger.info(userPost.getContent());
+        userPost.setDate(new Date());
+        userPost.setUserName(principal.getName());
+        logger.info(userPost.getContent() + " with in " + userPost.getTitle()
+                + " at " + userPost.getDate() + " : " + userPost.getUserName());
+        userPostRepository.save(userPost);
         return "home";
     }
 }

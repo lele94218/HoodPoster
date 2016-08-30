@@ -38,6 +38,12 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @RequestMapping(value = "/test")
+    public String TestIt() {
+        return "test";
+    }
+
+
     @RequestMapping(value = "/{username}", method = GET)
     public String showUserProfile(@PathVariable String username, Model model) {
         HoodUser hoodUser = userRepository.findByUsername(username);

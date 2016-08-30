@@ -40,7 +40,7 @@ dependencies {
     compile group: 'org.webjars', name: 'bootstrap', version: '3.3.6'
     compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity3:2.1.1.RELEASE"
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.38'
-    compile "org.hibernate:hibernate-validator:5.0.1.Final"
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.2.4.Final'
     compile group: 'org.jsoup', name: 'jsoup', version: '1.8.3'
 
 
