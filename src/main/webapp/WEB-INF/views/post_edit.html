@@ -77,14 +77,9 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Text Editors
-                        <small>Rich Text (WYSIWYG) Editors</small>
+                        New Post
+                        <small>editors</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li><a href="#">Forms</a></li>
-                        <li class="active">Editors</li>
-                    </ol>
                 </section>
 
                 <!-- Main content -->
@@ -92,16 +87,35 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-info" data-aos="fade-up">
-                                <div class="box-header">
-                                    <h3 class="box-title">SummerNote Editor
-                                        <small>Specialized editor for Bootstrap</small>
-                                    </h3>
-                                </div><!-- /.box-header -->
                                 <div class="box-body pad">
-                                    <form>
-              <textarea id="summernote-editor" name="editor1" rows="10" cols="80">
-                This is my textarea to be replaced with Summernote Editor.
-              </textarea>
+                                    <form method="POST" th:object="${userPost}" th:action="@{/post/save}">
+                                        <div th:if="${#fields.hasErrors('*')}">
+                                            <div class="form-group has-error" th:each="err : ${#fields.errors('*')}">
+                                                <label class="control-label">
+                                                    <i class="fa fa-times-circle-o"></i>
+                                                    <span th:text="${err}">Input is incorrect</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="box-header">
+                                            <h3 class="box-title">Title</h3>
+                                        </div><!-- /.box-header -->
+                                        <div class="form-group">
+                                            <input th:field="*{title}" type="text" class="form-control"
+                                                   placeholder="Enter ..."/>
+                                        </div>
+                                        <div class="box-header">
+                                            <h3 class="box-title">Content
+                                                <small>Specialized editor for Bootstrap</small>
+                                            </h3>
+                                        </div><!-- /.box-header -->
+                                        <textarea th:field="*{content}" id="summernote-editor" name="editor1" rows="10"
+                                                  cols="80">
+
+                                        </textarea>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div><!-- /.box -->

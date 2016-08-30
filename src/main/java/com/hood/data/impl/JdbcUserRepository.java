@@ -23,7 +23,8 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     public HoodUser save(HoodUser hoodUser) {
-        jdbcOperations.update("INSERT INTO user (username, password, email) VALUES (?, ?, ?)", hoodUser.getUsername(), hoodUser.getPassword(), hoodUser.getEmail());
+        jdbcOperations.update("INSERT INTO user (username, password, email) VALUES (?, ?, ?)",
+                hoodUser.getUsername(), hoodUser.getPassword(), hoodUser.getEmail());
         return hoodUser;
     }
 
