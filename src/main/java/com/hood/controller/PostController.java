@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,8 +49,10 @@ public class PostController {
         return "home";
     }
 
-    @RequestMapping(value = "/see")
-    public String findUserPost() {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String findUserPost(@PathVariable Long id, Model model) {
+        UserPost userPost = userPostRepository.findById(id);
+        model.addAttribute(userPost);
         return "post_detail";
     }
 }

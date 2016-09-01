@@ -30,8 +30,8 @@ public class JdbcUserRepository implements UserRepository {
 
     public HoodUser findByUsername(String username) {
         try {
-            HoodUser user = jdbcOperations.queryForObject("SELECT id, username, password, email FROM user where username = ?", new UserRowMapper(), username);
-            return user;
+            return jdbcOperations.queryForObject("SELECT id, username, password, email FROM user where username = ?",
+                    new UserRowMapper(), username);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

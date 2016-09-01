@@ -76,8 +76,7 @@
             <div class="content-wrapper forms-editor-page">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        New Post
+                    <h1 th:text="${userPost.title}">
                         <small>editors</small>
                     </h1>
                 </section>
@@ -91,22 +90,18 @@
                                 <div class="box-header with-border">
                                     <div class="user-block">
                                         <img class="img-circle" src="http://i.pravatar.cc/128?img=14" alt="user image"/>
-                                        <span class="username"><a href="#">Nathan Spencer</a></span>
-                                        <span class="description">Shared publicly - 7:30 PM Today</span>
+                                        <span class="username"><a href="#" th:text="${userPost.userName}"></a></span>
+                                        <span class="description" th:text="${userPost.date}"></span>
                                     </div><!-- /.user-block -->
-                                    <div class="box-tools">
-                                        <button class="btn btn-box-tool" data-toggle="tooltip" title=""
-                                                data-original-title="Mark as read"><i class="fa fa-circle-o"></i>
-                                        </button>
-                                        <button class="btn btn-box-tool" data-widget="collapse"><i
-                                                class="fa fa-minus"></i></button>
-                                        <button class="btn btn-box-tool" data-widget="remove"><i
-                                                class="fa fa-times"></i></button>
-                                    </div><!-- /.box-tools -->
                                 </div><!-- /.box-header -->
-                                <div class="box-body">
-                                    <img class="img-responsive pad" th:src="@{/resources/img/photo2.png}" alt="Photo"/>
-                                    <p>I took this photo this morning. What do you guys think?</p>
+                                <div class="box-body" th:utext="${userPost.content}">
+
+                                    <!--main content-->
+                                    <!--<img class="img-responsive pad" th:src="@{/resources/img/photo2.png}" alt="Photo"/>-->
+                                    <!--<p>I took this photo this morning. What do you guys think?</p>-->
+
+
+
                                     <button class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
                                     <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like
                                     </button>
