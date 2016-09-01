@@ -1,0 +1,164 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Atlas Admin</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <!-- Font awesome -->
+    <link th:href="@{/resources/css/css.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/resources/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap3-wysihtml5.min.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/summernote.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/styles.min.css}" id="main-stylesheet"/>
+    <script th:src="@{/resources/js/main.min.js}"></script>
+
+</head>
+<body class="skin-deep-blue sidebar-image misty-mountains sidebar-collapse" data-aos-easing="ease"
+      data-aos-duration="400" data-aos-delay="0">
+
+<div class="wrapper">
+    <header class="main-header">
+        <a href="/" class="logo">
+            <span class="logo-lg">Atlas</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!--未登入-->
+                    <li sec:authorize="not isAuthenticated()">
+                        <a th:href="@{/user/login}">
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    <!--已登入-->
+                    <li class="dropdown user user-menu" sec:authorize="isAuthenticated()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="http://i.pravatar.cc/300?img=59" class="user-image" alt="User Image"/>
+                            <span class="hidden-xs" sec:authentication="name">hoodUser-name</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <img src="http://i.pravatar.cc/300?img=59" class="img-circle" alt="User Image"/>
+                                <p>
+                                    Zachary Banks - Web Developer
+                                    <small>Member since Nov. 2012</small>
+                                </p>
+                            </li>
+                            <li class="user-body">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="content-wrapper-transition">
+        <div class="content-wrapper-inner">
+
+            <div class="content-wrapper forms-editor-page">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        New Post
+                        <small>editors</small>
+                    </h1>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row aos-init aos-animate" data-aos="fade-up">
+                        <div class="col-md-12">
+                            <!-- Box Comment -->
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <div class="user-block">
+                                        <img class="img-circle" src="http://i.pravatar.cc/128?img=14" alt="user image"/>
+                                        <span class="username"><a href="#">Nathan Spencer</a></span>
+                                        <span class="description">Shared publicly - 7:30 PM Today</span>
+                                    </div><!-- /.user-block -->
+                                    <div class="box-tools">
+                                        <button class="btn btn-box-tool" data-toggle="tooltip" title=""
+                                                data-original-title="Mark as read"><i class="fa fa-circle-o"></i>
+                                        </button>
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i></button>
+                                        <button class="btn btn-box-tool" data-widget="remove"><i
+                                                class="fa fa-times"></i></button>
+                                    </div><!-- /.box-tools -->
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <img class="img-responsive pad" th:src="@{/resources/img/photo2.png}" alt="Photo"/>
+                                    <p>I took this photo this morning. What do you guys think?</p>
+                                    <button class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+                                    <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like
+                                    </button>
+                                    <span class="pull-right text-muted">127 likes - 3 comments</span>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer box-comments">
+                                    <div class="box-comment">
+                                        <!-- User image -->
+                                        <img class="img-circle img-sm" src="http://i.pravatar.cc/128?img=12"
+                                             alt="user image"/>
+                                        <div class="comment-text">
+                <span class="username">
+                  Maria Gonzales
+                  <span class="text-muted pull-right">8:03 PM Today</span>
+                </span><!-- /.username -->
+                                            It is a long established fact that a reader will be distracted
+                                            by the readable content of a page when looking at its layout.
+                                        </div><!-- /.comment-text -->
+                                    </div><!-- /.box-comment -->
+                                    <div class="box-comment">
+                                        <!-- User image -->
+                                        <img class="img-circle img-sm" src="http://i.pravatar.cc/128?img=21"
+                                             alt="user image"/>
+                                        <div class="comment-text">
+                <span class="username">
+                  Luna Stark
+                  <span class="text-muted pull-right">8:03 PM Today</span>
+                </span><!-- /.username -->
+                                            It is a long established fact that a reader will be distracted
+                                            by the readable content of a page when looking at its layout.
+                                        </div><!-- /.comment-text -->
+                                    </div><!-- /.box-comment -->
+                                </div><!-- /.box-footer -->
+                                <div class="box-footer">
+                                    <form action="#" method="post">
+                                        <img class="img-responsive img-circle img-sm"
+                                             src="http://i.pravatar.cc/128?img=19"
+                                             alt="alt text"/>
+                                        <!-- .img-push is used to add margin to elements next to floating images -->
+                                        <div class="img-push">
+                                            <input type="text" class="form-control input-sm"
+                                                   placeholder="Press enter to post comment"/>
+                                        </div>
+                                    </form>
+                                </div><!-- /.box-footer -->
+                            </div><!-- /.box -->
+                        </div><!-- /.col -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

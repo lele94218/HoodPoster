@@ -47,4 +47,9 @@ public class PostController {
         userPostRepository.save(userPost);
         return "home";
     }
+
+    @RequestMapping(value = "/see")
+    public String findUserPost() {
+        return "post_detail";
+    }
 }
