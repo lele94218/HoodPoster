@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -52,7 +53,11 @@ public class PostController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String findUserPost(@PathVariable Long id, Model model) {
         UserPost userPost = userPostRepository.findById(id);
+        Date date = userPost.getDate();
+        logger.info(date.toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' HH:MM");
         model.addAttribute(userPost);
+        model.addAttribute("dateStr", sdf.format(date));
         return "post_detail";
     }
 }

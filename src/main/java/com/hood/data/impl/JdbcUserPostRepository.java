@@ -46,7 +46,7 @@ public class JdbcUserPostRepository implements UserPostRepository {
 
     private static class UserPostRowMapper implements RowMapper<UserPost> {
         public UserPost mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new UserPost(rs.getLong("id"), rs.getString("title"), rs.getDate("date"),
+            return new UserPost(rs.getLong("id"), rs.getString("title"), rs.getTimestamp("date"),
                     rs.getString("username"), rs.getString("content"));
         }
     }
