@@ -47,15 +47,14 @@ public class PostController {
         logger.info(userPost.getContent() + " with in " + userPost.getTitle()
                 + " at " + userPost.getDate() + " : " + userPost.getUserName());
         userPostRepository.save(userPost);
-        return "home";
+        return "redirect: /post/" + userPost.getId().toString();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String findUserPost(@PathVariable Long id, Model model) {
         UserPost userPost = userPostRepository.findById(id);
         Date date = userPost.getDate();
-        logger.info(date.toString());
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' HH:MM");
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' HH:mm");
         model.addAttribute(userPost);
         model.addAttribute("dateStr", sdf.format(date));
         return "post_detail";
