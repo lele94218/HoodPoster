@@ -1,11 +1,14 @@
 package com.hood.common;
 
+import org.apache.log4j.Logger;
+
 import java.util.Collection;
 
 /**
  * @author taoranxue on 9/1/16 9:24 PM.
  */
 public class Page<T> {
+    Logger logger = Logger.getLogger(Page.class);
     //page size
     private int pageSize;
     //page number
@@ -20,6 +23,15 @@ public class Page<T> {
     private int entityCount;
     //pages number
     private int pageCount;
+
+    public boolean hasPrevious() {
+        return this.getPageNumber() > 1;
+    }
+
+    public boolean hasNext() {
+        logger.info(getPageNumber() + " " + getPageCount());
+        return this.getPageNumber() < this.getPageCount();
+    }
 
     public Page(int pageSize, int pageNumber, int entityCount) {
         if (pageNumber > 1 && pageSize <= 0) {

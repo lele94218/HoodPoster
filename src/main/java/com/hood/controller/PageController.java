@@ -25,7 +25,7 @@ public class PageController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage(@RequestParam(value = "pn", defaultValue = "0")Integer pageNumber,
+    public String homePage(@RequestParam(value = "pn", defaultValue = "1")Integer pageNumber,
                            @RequestParam(value = "ps", defaultValue = "10")Integer pageSize,
                            Model model) {
         Page<UserPost> page = userPostRepository.findAllPage(pageNumber, pageSize);
