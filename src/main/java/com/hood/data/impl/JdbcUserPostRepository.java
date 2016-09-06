@@ -63,8 +63,9 @@ public class JdbcUserPostRepository implements UserPostRepository {
     public Page<UserPost> findAllPage(int pageNumber, int pageSize) {
         int entityCount = jdbcOperations.queryForObject("SELECT count(*) FROM user_post", Integer.class);
         Page<UserPost> page = new Page<UserPost>(pageSize, pageNumber, entityCount);
-        List<UserPost> list = jdbcOperations.queryForList("SELECT id, title, date, userName, content FROM user_post LIMIT ?, ?",
-                new Object[]{page.getFirstEntityIndex(), page.getPageSize()}, UserPost.class);
+        List<UserPost> list = jdbcOperations.query("SELECT id, title, date, userName, content FROM user_post LIMIT ?, ?",
+                new JdbcUserPostRepository.UserPostRowMapper(),
+                page.getFirstEntityIndex(), page.getPageSize());
         page.setEntities(list);
         return page;
     }

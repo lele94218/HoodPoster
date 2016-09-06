@@ -76,7 +76,8 @@
             <div class="content-wrapper forms-editor-page">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1 text="All">
+                    <h1>
+                        Home
                         <small>editors</small>
                     </h1>
                 </section>
@@ -85,103 +86,126 @@
                 <section class="content">
                     <div class="row aos-init aos-animate" data-aos="fade-up">
                         <div class="col-md-9">
-                            <div class="nav-tabs-custom">
+                            <div class="nav-tabs-custom" th:each="userPost : ${page.entities}">
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
-                                        <!-- Post -->
                                         <div class="post">
                                             <div class="user-block">
-                                                <img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=28" alt="user image"/>
-                                                <span class="username">
-                    <a href="#">Nathan Spencer</a>
-                  </span>
-                                                <span class="description">Shared publicly - 7:30 PM today</span>
+                                                <img class="img-circle img-bordered-sm"
+                                                     src="http://i.pravatar.cc/128?img=28" alt="user image"/>
+                                                <span class="username"><a href="#"><span
+                                                        th:text="${userPost.title}"></span></a></span>
+                                                <span class="description"
+                                                      th:text="${#dates.format(userPost.date, 'MMM d, yyyy ''at'' HH:mm')}"></span>
                                             </div><!-- /.user-block -->
-                                            <p>
-                                                Lorem ipsum represents a long-held tradition for designers,
-                                                typographers and the like. Some people hate it and argue for
-                                                its demise, but others ignore the hate as they create awesome
-                                                tools to help create filler text for everyone from bacon lovers
-                                                to Charlie Sheen fans.
-                                            </p>
+                                            <p><span th:utext="${userPost.content}"></span></p>
                                             <ul class="list-inline">
-                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                                                <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
+                                                <li><a href="#" class="link-black text-sm"><i
+                                                        class="fa fa-share margin-r-5"></i> Share</a></li>
+                                                <li><a href="#" class="link-black text-sm"><i
+                                                        class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
+                                                <li class="pull-right"><a href="#" class="link-black text-sm"><i
+                                                        class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
                                             </ul>
 
-                                            <input class="form-control input-sm" type="text" placeholder="Type a comment"/>
-                                        </div><!-- /.post -->
+                                            <input class="form-control input-sm" type="text"
+                                                   placeholder="Type a comment"/>
+                                        </div>
+                                    </div><!-- /.tab-content -->
+                                </div><!-- /.nav-tabs-custom -->
+                            </div>
 
-                                        <!-- Post -->
-                                        <div class="post clearfix">
-                                            <div class="user-block">
-                                                <img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=19" alt="user image"/>
-                                                <span class="username">
-                    <a href="#">Sarah Ross</a>
-                  </span>
-                                                <span class="description">Sent you a message - 3 days ago</span>
-                                            </div><!-- /.user-block -->
-                                            <p>
-                                                Lorem ipsum represents a long-held tradition for designers,
-                                                typographers and the like. Some people hate it and argue for
-                                                its demise, but others ignore the hate as they create awesome
-                                                tools to help create filler text for everyone from bacon lovers
-                                                to Charlie Sheen fans.
-                                            </p>
 
-                                            <form class="form-horizontal">
-                                                <div class="form-group margin-bottom-none">
-                                                    <div class="col-sm-9">
-                                                        <input class="form-control input-sm" placeholder="Response"/>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <button class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div><!-- /.post -->
+                            <!---->
+                            <!--&lt;!&ndash; Post &ndash;&gt;-->
+                            <!--<div class="post">-->
+                            <!--<div class="user-block">-->
+                            <!--<img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=28" alt="user image"/>-->
+                            <!--<span class="username"><a href="#">Nathan Spencer</a></span>-->
+                            <!--<span class="description">Shared publicly - 7:30 PM today</span>-->
+                            <!--</div>&lt;!&ndash; /.user-block &ndash;&gt;-->
+                            <!--<p>-->
+                            <!--Lorem ipsum represents a long-held tradition for designers,-->
+                            <!--typographers and the like. Some people hate it and argue for-->
+                            <!--its demise, but others ignore the hate as they create awesome-->
+                            <!--tools to help create filler text for everyone from bacon lovers-->
+                            <!--to Charlie Sheen fans.-->
+                            <!--</p>-->
+                            <!--<ul class="list-inline">-->
+                            <!--<li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>-->
+                            <!--<li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>-->
+                            <!--<li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>-->
+                            <!--</ul>-->
 
-                                        <!-- Post -->
-                                        <div class="post">
-                                            <div class="user-block">
-                                                <img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=18" alt="user image"/>
-                                                <span class="username">
-                    <a href="#">Adam Jones</a>
-                  </span>
-                                                <span class="description">Posted 5 photos - 5 days ago</span>
-                                            </div><!-- /.user-block -->
-                                            <div class="row margin-bottom">
-                                                <div class="col-sm-6">
-                                                    <img class="img-responsive" src="/images/photo1.png" alt="Photo"/>
-                                                </div><!-- /.col -->
-                                                <div class="col-sm-6">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <img class="img-responsive" src="/images/photo2.png" alt="Photo"/>
-                                                            <br/>
-                                                            <img class="img-responsive" src="/images/photo3.jpg" alt="Photo"/>
-                                                        </div><!-- /.col -->
-                                                        <div class="col-sm-6">
-                                                            <img class="img-responsive" src="/images/photo4.jpg" alt="Photo"/>
-                                                            <br/>
-                                                            <img class="img-responsive" src="/images/photo1.png" alt="Photo"/>
-                                                        </div><!-- /.col -->
-                                                    </div><!-- /.row -->
-                                                </div><!-- /.col -->
-                                            </div><!-- /.row -->
+                            <!--<input class="form-control input-sm" type="text" placeholder="Type a comment"/>-->
+                            <!--</div>&lt;!&ndash; /.post &ndash;&gt;-->
 
-                                            <ul class="list-inline">
-                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                                                <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-                                            </ul>
+                            <!--&lt;!&ndash; Post &ndash;&gt;-->
+                            <!--<div class="post clearfix">-->
+                            <!--<div class="user-block">-->
+                            <!--<img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=19" alt="user image"/>-->
+                            <!--<span class="username">-->
+                            <!--<a href="#">Sarah Ross</a>-->
+                            <!--</span>-->
+                            <!--<span class="description">Sent you a message - 3 days ago</span>-->
+                            <!--</div>&lt;!&ndash; /.user-block &ndash;&gt;-->
+                            <!--<p>-->
+                            <!--Lorem ipsum represents a long-held tradition for designers,-->
+                            <!--typographers and the like. Some people hate it and argue for-->
+                            <!--its demise, but others ignore the hate as they create awesome-->
+                            <!--tools to help create filler text for everyone from bacon lovers-->
+                            <!--to Charlie Sheen fans.-->
+                            <!--</p>-->
 
-                                            <input class="form-control input-sm" type="text" placeholder="Type a comment"/>
-                                        </div><!-- /.post -->
-                                    </div>
-                                </div><!-- /.tab-content -->
-                            </div><!-- /.nav-tabs-custom -->
+                            <!--<form class="form-horizontal">-->
+                            <!--<div class="form-group margin-bottom-none">-->
+                            <!--<div class="col-sm-9">-->
+                            <!--<input class="form-control input-sm" placeholder="Response"/>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-3">-->
+                            <!--<button class="btn btn-danger pull-right btn-block btn-sm">Send</button>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</form>-->
+                            <!--</div>&lt;!&ndash; /.post &ndash;&gt;-->
+
+                            <!--&lt;!&ndash; Post &ndash;&gt;-->
+                            <!--<div class="post">-->
+                            <!--<div class="user-block">-->
+                            <!--<img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=18" alt="user image"/>-->
+                            <!--<span class="username">-->
+                            <!--<a href="#">Adam Jones</a>-->
+                            <!--</span>-->
+                            <!--<span class="description">Posted 5 photos - 5 days ago</span>-->
+                            <!--</div>&lt;!&ndash; /.user-block &ndash;&gt;-->
+                            <!--<div class="row margin-bottom">-->
+                            <!--<div class="col-sm-6">-->
+                            <!--<img class="img-responsive" src="/images/photo1.png" alt="Photo"/>-->
+                            <!--</div>&lt;!&ndash; /.col &ndash;&gt;-->
+                            <!--<div class="col-sm-6">-->
+                            <!--<div class="row">-->
+                            <!--<div class="col-sm-6">-->
+                            <!--<img class="img-responsive" src="/images/photo2.png" alt="Photo"/>-->
+                            <!--<br/>-->
+                            <!--<img class="img-responsive" src="/images/photo3.jpg" alt="Photo"/>-->
+                            <!--</div>&lt;!&ndash; /.col &ndash;&gt;-->
+                            <!--<div class="col-sm-6">-->
+                            <!--<img class="img-responsive" src="/images/photo4.jpg" alt="Photo"/>-->
+                            <!--<br/>-->
+                            <!--<img class="img-responsive" src="/images/photo1.png" alt="Photo"/>-->
+                            <!--</div>&lt;!&ndash; /.col &ndash;&gt;-->
+                            <!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
+                            <!--</div>&lt;!&ndash; /.col &ndash;&gt;-->
+                            <!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
+
+                            <!--<ul class="list-inline">-->
+                            <!--<li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>-->
+                            <!--<li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>-->
+                            <!--<li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>-->
+                            <!--</ul>-->
+
+                            <!--<input class="form-control input-sm" type="text" placeholder="Type a comment"/>-->
+                            <!--</div>&lt;!&ndash; /.post &ndash;&gt;-->
                         </div>
                         <div class="col-md-3">
                             <!--other-->

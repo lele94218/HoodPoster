@@ -10,7 +10,7 @@
     <div class="form">
 
         <form class="register-form" method="POST" th:object="${hoodUser}" th:action="@{/user/register}"
-              th:style="(${#fields.hasErrors('*')} or ${existUsername})? 'display: block'">
+              th:style="(${#fields.hasErrors('*')} or ${existUsername})? 'display: block'" >
             <div class="error" th:if="${#fields.hasErrors('*')}">
                 <p class="error" th:each="err : ${#fields.errors('*')}"
                    th:text="${err}">Input is incorrect
