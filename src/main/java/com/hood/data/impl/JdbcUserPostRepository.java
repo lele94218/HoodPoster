@@ -1,5 +1,6 @@
 package com.hood.data.impl;
 
+import com.hood.common.Page;
 import com.hood.data.UserPostRepository;
 import com.hood.pojo.UserPost;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,15 @@ public class JdbcUserPostRepository implements UserPostRepository {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public Page<UserPost> findAllPage(int pageNumber, int pageSize) {
+        int entityCount = jdbcOperations.queryForObject("SELECT count(*) FROM user_post", Integer.class);
+        Page<UserPost> page = new Page<UserPost>(pageSize, pageNumber, entityCount);
+        List<UserPost> list = jdbcOperations.queryForList("SELECT id, title, date, userName, content FROM user_post LIMIT ?, ?",
+                new Object[]{page.getFirstEntityIndex(), page.getPageSize()}, UserPost.class);
+        page.setEntities(list);
+        return page;
     }
 
 

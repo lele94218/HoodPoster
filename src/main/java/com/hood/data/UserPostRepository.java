@@ -1,5 +1,6 @@
 package com.hood.data;
 
+import com.hood.common.Page;
 import com.hood.pojo.UserPost;
 
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.List;
 public interface UserPostRepository {
     UserPost save(UserPost userPost);
 
-
     List<UserPost> findByUserName(String userName);
 
     UserPost findById(Long id);
+
+    Page<UserPost> findAllPage(int pageNumber, int pageSize);
 }
