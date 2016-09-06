@@ -59,4 +59,5 @@ public class PostController {
         model.addAttribute("dateStr", sdf.format(date));
         return "post_detail";
     }
+
 }

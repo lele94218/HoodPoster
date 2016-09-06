@@ -2,10 +2,197 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Atlas Admin</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <!-- Font awesome -->
+    <link th:href="@{/resources/css/css.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/resources/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap3-wysihtml5.min.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/summernote.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/styles.min.css}" id="main-stylesheet"/>
+    <script th:src="@{/resources/js/main.min.js}"></script>
+
 </head>
-<body>
+<body class="skin-deep-blue sidebar-image misty-mountains sidebar-collapse" data-aos-easing="ease"
+      data-aos-duration="400" data-aos-delay="0">
+
+<div class="wrapper">
+    <header class="main-header">
+        <a href="/" class="logo">
+            <span class="logo-lg">Atlas</span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!--未登入-->
+                    <li sec:authorize="not isAuthenticated()">
+                        <a th:href="@{/user/login}">
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    <!--已登入-->
+                    <li class="dropdown user user-menu" sec:authorize="isAuthenticated()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="http://i.pravatar.cc/300?img=59" class="user-image" alt="User Image"/>
+                            <span class="hidden-xs" sec:authentication="name">hoodUser-name</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <img src="http://i.pravatar.cc/300?img=59" class="img-circle" alt="User Image"/>
+                                <p>
+                                    Zachary Banks - Web Developer
+                                    <small>Member since Nov. 2012</small>
+                                </p>
+                            </li>
+                            <li class="user-body">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Followers</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Friends</a>
+                                </div>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="content-wrapper-transition">
+        <div class="content-wrapper-inner">
+
+            <div class="content-wrapper forms-editor-page">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1 text="All">
+                        <small>editors</small>
+                    </h1>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row aos-init aos-animate" data-aos="fade-up">
+                        <div class="col-md-9">
+                            <div class="nav-tabs-custom">
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="activity">
+                                        <!-- Post -->
+                                        <div class="post">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=28" alt="user image"/>
+                                                <span class="username">
+                    <a href="#">Nathan Spencer</a>
+                  </span>
+                                                <span class="description">Shared publicly - 7:30 PM today</span>
+                                            </div><!-- /.user-block -->
+                                            <p>
+                                                Lorem ipsum represents a long-held tradition for designers,
+                                                typographers and the like. Some people hate it and argue for
+                                                its demise, but others ignore the hate as they create awesome
+                                                tools to help create filler text for everyone from bacon lovers
+                                                to Charlie Sheen fans.
+                                            </p>
+                                            <ul class="list-inline">
+                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
+                                                <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
+                                            </ul>
+
+                                            <input class="form-control input-sm" type="text" placeholder="Type a comment"/>
+                                        </div><!-- /.post -->
+
+                                        <!-- Post -->
+                                        <div class="post clearfix">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=19" alt="user image"/>
+                                                <span class="username">
+                    <a href="#">Sarah Ross</a>
+                  </span>
+                                                <span class="description">Sent you a message - 3 days ago</span>
+                                            </div><!-- /.user-block -->
+                                            <p>
+                                                Lorem ipsum represents a long-held tradition for designers,
+                                                typographers and the like. Some people hate it and argue for
+                                                its demise, but others ignore the hate as they create awesome
+                                                tools to help create filler text for everyone from bacon lovers
+                                                to Charlie Sheen fans.
+                                            </p>
+
+                                            <form class="form-horizontal">
+                                                <div class="form-group margin-bottom-none">
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control input-sm" placeholder="Response"/>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <button class="btn btn-danger pull-right btn-block btn-sm">Send</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div><!-- /.post -->
+
+                                        <!-- Post -->
+                                        <div class="post">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="http://i.pravatar.cc/128?img=18" alt="user image"/>
+                                                <span class="username">
+                    <a href="#">Adam Jones</a>
+                  </span>
+                                                <span class="description">Posted 5 photos - 5 days ago</span>
+                                            </div><!-- /.user-block -->
+                                            <div class="row margin-bottom">
+                                                <div class="col-sm-6">
+                                                    <img class="img-responsive" src="/images/photo1.png" alt="Photo"/>
+                                                </div><!-- /.col -->
+                                                <div class="col-sm-6">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <img class="img-responsive" src="/images/photo2.png" alt="Photo"/>
+                                                            <br/>
+                                                            <img class="img-responsive" src="/images/photo3.jpg" alt="Photo"/>
+                                                        </div><!-- /.col -->
+                                                        <div class="col-sm-6">
+                                                            <img class="img-responsive" src="/images/photo4.jpg" alt="Photo"/>
+                                                            <br/>
+                                                            <img class="img-responsive" src="/images/photo1.png" alt="Photo"/>
+                                                        </div><!-- /.col -->
+                                                    </div><!-- /.row -->
+                                                </div><!-- /.col -->
+                                            </div><!-- /.row -->
+
+                                            <ul class="list-inline">
+                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                                                <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
+                                                <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
+                                            </ul>
+
+                                            <input class="form-control input-sm" type="text" placeholder="Type a comment"/>
+                                        </div><!-- /.post -->
+                                    </div>
+                                </div><!-- /.tab-content -->
+                            </div><!-- /.nav-tabs-custom -->
+                        </div>
+                        <div class="col-md-3">
+                            <!--other-->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
