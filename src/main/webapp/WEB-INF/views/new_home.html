@@ -134,14 +134,16 @@
 
                                         <li th:each="i : ${#numbers.sequence(1, page.pageCount)}"
                                             th:class="${page.pageNumber == i} ? 'paginate_button active' : 'paginate_button' ">
-                                            <a th:href="'?pn=' + ${i}" aria-controls="example2" th:data-dt-idx="${i}" tabindex="0"><span th:text="${i}"></span></a>
+                                            <a th:href="'?pn=' + ${i}" aria-controls="example2" th:data-dt-idx="${i}"
+                                               tabindex="0"><span th:text="${i}"></span></a>
                                         </li>
 
 
                                         <li th:if="${page.hasNext()}" class="paginate_button next" id="example2_next">
                                             <a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a>
                                         </li>
-                                        <li th:if="${not page.hasNext()}" class="paginate_button next disable" id="example2_next">
+                                        <li th:if="${not page.hasNext()}" class="paginate_button next disable"
+                                            id="example2_next">
                                             <a aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a>
                                         </li>
                                     </ul>
@@ -241,6 +243,7 @@
                         </div>
                         <div class="col-md-3">
                             <!--other-->
+                            <a class="btn btn-block btn-primary btn-lg" href="/post/add">Add Post Here!</a>
                         </div>
                     </div>
                 </section>
