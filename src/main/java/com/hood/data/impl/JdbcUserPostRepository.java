@@ -42,8 +42,6 @@ public class JdbcUserPostRepository implements UserPostRepository {
                         return ps;
                     }
                 }, keyHolder);
-        jdbcOperations.update("INSERT INTO user_post (title, date, userName, content) VALUES (?, ?, ?, ?)",
-                userPost.getTitle(), userPost.getDate(), userPost.getUserName(), userPost.getContent());
         userPost.setId(keyHolder.getKey().longValue());
         return userPost;
     }
@@ -63,7 +61,7 @@ public class JdbcUserPostRepository implements UserPostRepository {
     public Page<UserPost> findAllPage(int pageNumber, int pageSize) {
         int entityCount = jdbcOperations.queryForObject("SELECT count(*) FROM user_post", Integer.class);
         Page<UserPost> page = new Page<UserPost>(pageSize, pageNumber, entityCount);
-        List<UserPost> list = jdbcOperations.query("SELECT id, title, date, userName, content FROM user_post LIMIT ?, ?",
+        List<UserPost> list = jdbcOperations.query("SELECT id, title, date, userName, content FROM user_post ORDER BY date DESC LIMIT ?, ? ",
                 new JdbcUserPostRepository.UserPostRowMapper(),
                 page.getFirstEntityIndex(), page.getPageSize());
         page.setEntities(list);
