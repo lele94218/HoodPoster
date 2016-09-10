@@ -38,7 +38,8 @@ public class UserPost {
                     @SafeHtml.Tag(name = "img", attributes = {"style", "data-filename", "align", "alt", "height", "src", "title", "width"}),
                     @SafeHtml.Tag(name = "b", attributes = {"style"}),
                     @SafeHtml.Tag(name = "u", attributes = {"style"}),
-                    @SafeHtml.Tag(name = "p", attributes = {"style"})
+                    @SafeHtml.Tag(name = "p", attributes = {"style"}),
+                    @SafeHtml.Tag(name = "span", attributes = {"style"})
             },
             message = "{html.safe}"
     )

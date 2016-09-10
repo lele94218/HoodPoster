@@ -55,6 +55,7 @@ public class PostController {
         UserPost userPost = userPostRepository.findById(id);
         Date date = userPost.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy 'at' HH:mm");
+        logger.info(userPost.getContent());
         model.addAttribute(userPost);
         model.addAttribute("dateStr", sdf.format(date));
         return "post_detail";
