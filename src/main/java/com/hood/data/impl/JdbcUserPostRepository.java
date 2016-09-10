@@ -35,7 +35,6 @@ public class JdbcUserPostRepository implements UserPostRepository {
                                 "INSERT INTO user_post (title, date, userName, content) VALUES (?, ?, ?, ?)",
                                 new String[]{"id"});
                         ps.setString(1, userPost.getTitle());
-//                        ps.setDate(2, new Date(userPost.getDate().getTime()));
                         ps.setTimestamp(2, new Timestamp(userPost.getDate().getTime()));
                         ps.setString(3, userPost.getUserName());
                         ps.setString(4, userPost.getContent());
