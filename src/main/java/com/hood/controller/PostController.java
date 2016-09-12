@@ -47,6 +47,7 @@ public class PostController {
         logger.info(userPost.getContent() + " with in " + userPost.getTitle()
                 + " at " + userPost.getDate() + " : " + userPost.getUserName());
         userPostRepository.save(userPost);
+
         return "redirect: /post/" + userPost.getId().toString();
     }
 
